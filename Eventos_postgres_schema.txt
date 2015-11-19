@@ -1,0 +1,35 @@
+//USER Table:
+create table UserTable
+( userId  INTEGER NOT NULL,
+  userName VARCHAR(20) NOT NULL,
+  password VARCHAR(32) NOT NULL,
+  email VARCHAR(320) NOT NULL,
+  phoneNumber CHAR(20) NOT NULL,
+  CONSTRAINT user_pk PRIMARY KEY (userId)
+);
+INSERT INTO UserTable
+VALUES (1,'kirti','munmun','kirtiram@usc.edu','2134773932');
+
+//GEOFENCE Table
+create table Geofence
+(
+geofenceId INTEGER NOT NULL,
+geofenceName VARCHAR(20) NOT NULL,
+geofenceCreator INTEGER,
+center GEOGRAPHY(POINT, 4326)
+CONSTRAINT geo_pk PRIMARY KEY (geofenceId)
+);
+
+INSERT INTO Geofence (geofenceId, geofenceName, geofenceCreator,center) VALUES (1,'GEO1','1', ST_GeographyFromText('SRID=4326;POINT(-110 30)') );
+
+// Events Table
+create table Events
+(
+eventId INTEGER NOT NULL,
+eventName VARCHAR(20) NOT NULL,
+sourceWeightage INTEGER,
+eventWebsiteURL VARCHAR(23),
+location GEOGRAPHY(POINT,4326)
+CONSTRAINT event_pk PRIMARY KEY (eventId)
+);
+INSERT INTO Events (eventId , eventName, location) VALUES(2,'EVENT1',SST_GeographyFromText('SRID=4326;POINT(-110 30)') );
